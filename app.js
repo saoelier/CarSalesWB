@@ -18,7 +18,7 @@ function getColor(d) {
          d > 100000   ? '#FD8D3C' :
          d > 50000    ? '#FEB24C' :
          d > 0        ? '#FED976' :
-                        '#FFEDA0';
+                        '#636363ff';
 }
 
 // === Стиль стран ===
@@ -35,18 +35,30 @@ function style(feature) {
 
 // === Подсветка при наведении ===
 function highlightFeature(e) {
+  
   const layer = e.target;
-  layer.setStyle({ weight: 2, color: '#666', fillOpacity: 0.9 });
+  console.log('layer', layer);
 
-  const code = layer.feature.properties.ISO_A3;
-  const country = layer.feature.properties.ADMIN;
+  const code = layer.feature.properties.adm0_a3_ar; // !!! done
+  const country = layer.feature.properties.admin; // !!! done
   const sales = salesData[code] || 0;
-  layer.bindPopup(`<b>${country}</b><br>Продано автомобилей: ${sales.toLocaleString()}`).openPopup();
+
+  // const colourOverlay = getColor(sales)
+  //  layer.setStyle({
+  //     opacity: 0.8,
+  //     fill: true,
+  //     fillColor: colourOverlay,
+  //     fillOpacity: 0.8});
+
+
+  layer.bindPopup(`<b>${country}</b><br>Cars sold: ${sales.toLocaleString()}`).openPopup();
 }
 
+
+
 function resetHighlight(e) {
-  geojsonLayer.resetStyle(e.target);
-  e.target.closePopup();
+  // geojsonLayer.resetStyle(e.target);
+  // e.target.closePopup();
 }
 
 // === События для стран ===
@@ -76,12 +88,25 @@ async function loadMap(year = 2024) {
     // 2️⃣ Загружаем GeoJSON
     const geoRes = await fetch('world.geo.json');
     const geojson = await geoRes.json();
-
     // 3️⃣ Удаляем старый слой, если есть
     if (geojsonLayer) map.removeLayer(geojsonLayer);
 
     // 4️⃣ Добавляем слой с обновлённым стилем
     geojsonLayer = L.geoJson(geojson, { style, onEachFeature }).addTo(map);
+    geojsonLayer.eachLayer(layer => {
+    const code = (layer.feature.properties.adm0_a3_ar || layer.feature.properties.ISO_A3 || "").toUpperCase();
+    const country = layer.feature.properties.admin;
+    const sales = salesData[code] || 0;
+
+    const colourOverlay = getColor(sales);
+    layer.setStyle({
+      fill: true,
+      fillColor: colourOverlay,
+      fillOpacity: 0.8,
+      color: '#fff',
+      weight: 1
+    });
+  });
 
   } catch (err) {
     console.error("❌ Ошибка при загрузке карты:", err);
