@@ -20,9 +20,23 @@
                 <a href="credits.html" class="menu-item">Credits</a>
             </div>
         </div>
-     <h1>Car sales</h1>
-  <select id="yearSelect"></select>
-  <div id="map"></div>
+     <h1>Car Sales Map</h1>
+<select id="yearSelect"></select>
+
+<!-- Легенда карти -->
+<div id="legend">
+  <div class="legend-item"><div class="legend-color" style="background:#800026"></div>10M+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#BD0026"></div>5M+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#E31A1C"></div>1M+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#FC4E2A"></div>500k+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#FD8D3C"></div>100k+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#FEB24C"></div>50k+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#FED976"></div>0+</div>
+  <div class="legend-item"><div class="legend-color" style="background:#ccc"></div>No Data</div>
+</div>
+
+<div id="map"></div>
+
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="app.js"></script>

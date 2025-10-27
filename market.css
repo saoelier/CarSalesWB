@@ -7,12 +7,66 @@ body {
   background: #f6f8fa;
   color: #222;
 }
+.menu {
+    display: flex;                  /* щоб елементи йшли в ряд */
+}
 
+.menu-item {
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto Nova', sans-serif;
+    font-size: 20px;
+    padding: 20px 16px;              /* внутрішній відступ — щоб прямокутник був більшим за текст */
+}
+
+.menu-item:hover {
+    background-color:  #0E1033;  
+    border: 2px solid white;  /* колір фону при наведенні */  /* м'яке світіння навколо прямокутника */
+    border-radius: 8px;
+
+}
 /* Заголовок и селект немного отступают от краёв */
 h1 {
-  margin: 16px;
-  font-size: 24px;
-  font-weight: 600;
+   color: white;                       /* білий текст */
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 4rem;
+  text-align: center;                 /* по центру */
+  background-color: #0D1B2A;          /* темно-синій фон */
+  padding: 20px 0;                    /* вертикальні відступи */
+  width: 100%;                        /* займає всю ширину */
+  box-sizing: border-box;             /* відступи враховуються у ширину */
+  margin: 0; 
+}
+#map { 
+    height: 80vh; 
+    width: 100%; 
+    border-radius: 15px; /* округлені кути */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #999;
 }
 
 /* Селектор года — аккуратно поверх карты или над ней */
@@ -52,8 +106,3 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 6px 14px rgba(20,30,50,0.12);
 }
-
-/* Стили для .header .menu если надо, чтобы не ломало дизайн */
-.header .menu { padding: 8px 16px; }
-.header .menu .menu-item { margin-left: 12px; color: #333; text-decoration: none; }
-.header .menu .menu-item:hover { text-decoration: underline; }
