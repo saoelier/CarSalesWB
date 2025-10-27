@@ -1,0 +1,293 @@
+/* ===== ХЕДЕР ===== */
+.header {
+    width: 100%;                    
+    height: 50px;                   
+    background-color: #030458;      
+
+    display: flex;                  
+    justify-content: flex-end;      
+    align-items: center;            
+    padding-right: 30px;     
+    z.index: 10;      
+}
+html {
+  scroll-behavior: smooth;
+}
+/* ===== МЕНЮ НАВІГАЦІЇ ===== */
+.menu {
+    display: flex;                  /* щоб елементи йшли в ряд */
+}
+
+.menu-item {
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto Nova', sans-serif;
+    font-size: 20px;
+    padding: 20px 16px;              /* внутрішній відступ — щоб прямокутник був більшим за текст */
+}
+
+.menu-item:hover {
+    background-color:  #0E1033;  
+    border: 2px solid white;  /* колір фону при наведенні */  /* м'яке світіння навколо прямокутника */
+    border-radius: 8px;
+
+}
+
+.background {
+    width: 100%;
+    height: 1100px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    border-radius: 0 0 200px 200px;
+    background-color: #0E1033;
+    z-index: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Nova', sans-serif;
+}
+
+#ar-prompt {
+    display: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;   /* текст ліворуч, картинка праворуч */
+  align-items: center;
+  width: 80%;                       /* щоб був відступ з боків */
+  max-width: 1200px;                /* обмеження, щоб не розлазилось */
+  margin: 0;
+  flex-wrap: wrap;                  /* щоб на вузьких екранах переносилось */
+  gap: 60px;
+}
+
+.title {
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 4rem;
+  flex: 1;                       /* щоб займав ліву частину */
+  min-width: 300px;
+}
+.start-btn {
+    margin-top: 30px;               /* відступ зверху */
+    display: inline-block;           /* щоб кнопка була “рядковою” і займала розмір контенту */
+    padding: 12px 24px;              /* внутрішній відступ зверху/знизу та з боків */
+    text-decoration: none;           /* прибираємо підкреслення */
+    color: white;                     /* колір тексту */
+    background-color: #030458;        /* фон, як у меню хедера */
+    border-radius: 8px;               /* закруглені кути */
+    font-family: 'Roboto Nova', sans-serif; /* шрифт */
+    font-size: 1.2rem;                /* розмір тексту */        /* плавна анімація при наведенні */
+    width: fit-content;               /* ширина під текст */
+    cursor: pointer;                  /* показує, що це кнопка */
+}
+
+.start-btn:hover {
+    background-color: #0E1033;        /* колір фону при наведенні */
+    border: 2px solid white;        /* обведення при наведенні для ефекту прямокутника */
+}
+.img1 { 
+    flex: 1;                          /* картинка займає праву частину */
+  display: flex;
+  justify-content: flex-end; 
+  border-radius: 10px;
+}
+
+.img1 img {
+    width: 100%;
+  max-width: 1500px;                 /* обмеження для великих екранів */
+  height: 1000px;                     /* зберігає пропорції */
+  border-radius: 10px;
+}
+
+.background {
+  width: 100%;
+  min-height: 1000px;
+  border-radius: 0 0 150px 150px;
+  background-color: #0E1033;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+/* ===== ПРОМО-БЛОК ===== */
+.promo {
+  display: flex;
+  justify-content: center;       /* по центру екрана */
+  align-items: center;
+  gap: 5vw;                      /* відстань між текстом і стрілкою від ширини екрана */
+  text-align: left;
+  position: relative;            /* щоб можна було позиціонувати всередині */
+  max-width: 90%;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+/* ===== ТЕКСТ ===== */
+.promo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1vh;
+  flex: 1;                       /* щоб займав пропорційне місце */
+  min-width: 40%;
+}
+
+.pm {
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 3vw;              /* адаптивний розмір тексту */
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ===== СТРІЛКА ===== */
+.img2 {
+  width: 10vw;                    /* адаптивна ширина стрілки */
+  height: auto;
+  flex-shrink: 0;                /* не стискається при зменшенні екрана */
+  animation: bounce 2s infinite;
+}
+
+/* Анімація стрілки */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.frgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.grid-item {
+    background-color: #0E1033;
+    border-radius: 12px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    max-height: 30vh; /* адаптивно під висоту екрану */
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.grid-item p {
+    color: white;
+    font-family: 'Roboto Nova', sans-serif;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.grid-item:hover {
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+    background-color: #030458;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;}
+
+/* ===== Анімація появи ===== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Анімація для всіх елементів окрім хедера */
+.container,
+.text-block,
+.title,
+.pm,
+.start-btn,
+.img1,
+.promo,
+.promo-text,
+.img2 {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+/* 
+.container { animation-delay: 0.2s; }
+.text-block { animation-delay: 0.4s; }
+.title { animation-delay: 0.6s; }
+.pm { animation-delay: 0.8s; }
+.start-btn { animation-delay: 1s; }
+.img1 { animation-delay: 0.6s; }
+.promo { animation-delay: 1.2s; }
+.promo-text { animation-delay: 1.4s; }
+.img2 { animation-delay: 1.6s; }*/
+
+/* Початковий стан — прихований і трохи знизу */
+.promo,
+.promo-text,
+.img2 {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Використовуємо псевдоклас, щоб анімація спрацювала, коли елемент приблизно доходить до середини вікна */
+.background:has(.promo) .promo {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.background:has(.promo) .promo-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+.background:has(.promo) .img2 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.9s;
+}
+
+/* ===== Анімація появи гріду по скролу ===== */
+.grid-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 
+    opacity 0.8s ease, 
+    transform 0.8s ease;
+}
+
+/* коли сітка .frgrid потрапляє у вікно — елементи по одному проявляються */
+body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
+.background:has(.frgrid) .grid-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* каскадна поява кожного блоку */
+.frgrid .grid-item:nth-child(1) { transition-delay: 0.2s; }
+.frgrid .grid-item:nth-child(2) { transition-delay: 0.4s; }
+.frgrid .grid-item:nth-child(3) { transition-delay: 0.6s; }
+.frgrid .grid-item:nth-child(4) { transition-delay: 0.8s; }
+.frgrid .grid-item:nth-child(5) { transition-delay: 1s; }
+.frgrid .grid-item:nth-child(6) { transition-delay: 1.2s; }
