@@ -7,8 +7,9 @@
     display: flex;                  
     justify-content: flex-end;      
     align-items: center;            
-    padding-right: 30px;     
-    z.index: 10;      
+    padding-right: 30px;    
+      position: relative; 
+    z-index: 10;      
 }
 html {
   scroll-behavior: smooth;
@@ -41,7 +42,7 @@ html {
     position: absolute;
     border-radius: 0 0 200px 200px;
     background-color: #0E1033;
-    z-index: 0;
+    z-index: 1;
 }
 
 body {

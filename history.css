@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  background-color: #ffffffff;
+  color: black;
+  font-family: 'Roboto Nova', sans-serif;
+}
+
+.background {
+  width: 100%;
+  height: 400px;
+  padding: 0;
+  align-items: center;
+  margin: 0;
+  position: absolute;
+  border-radius: 0 0 200px 200px;
+  background-color: #0E1033;
+  z-index: 1;
+}
+
+/* ===== ХЕДЕР ===== */
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: #030458;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 30px;
+  position: relative;
+  z-index: 10;
+}
+
+.menu {
+  display: flex; /* щоб елементи йшли в ряд */
+}
+
+.menu-item {
+  text-decoration: none;
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 20px;
+  padding: 20px 16px; /* внутрішній відступ — щоб прямокутник був більшим за текст */
+}
+
+.menu-item:hover {
+  background-color: #0E1033;
+  border: 2px solid white; /* колір фону при наведенні */
+  border-radius: 8px;
+}
+
+/* ===== ТАЙМЛАЙН ===== */
+.timeline-container {
+  width: 90%;
+  max-width: 1200px;
+  position: absolute; /* щоб "лежав" над background */
+  top: 50%; /* центруємо по вертикалі відносно background */
+  left: 50%; /* центруємо по горизонталі */
+  transform: translate(-50%, -50%); /* точне центрування */
+  z-index: 5; /* над background, під хедером */
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* щоб зайняти всю ширину контейнера */
+  border-top: 4px solid white;
+  position: relative;
+}
+
+.event {
+  position: relative;
+  text-align: center;
+}
+
+/* Точки на лінії */
+.dot {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px; /* на лінії */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Роки */
+.year {
+  display: block;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  color: white; /* стандартний колір */
+  text-decoration: none;
+  white-space: nowrap; /* не дозволяємо переносити */
+}
+
+.year:link,
+.year:visited,
+.year:active {
+  color: white;
+  text-decoration: none;
+}
+
+.event:hover .year {
+  color: #003e91;
+  transform: scale(3);
+}
+
+/* Ховер ефекти */
+.event:hover .dot {
+  background-color: #003e91;
+  transform: translateX(-50%) scale(1.3);
+}
+
+.event:hover .year {
+  color: #003e91;
+  font-size: 1.6rem; /* збільшуємо на 30% */
+  transition: color 0.3s, transform 0.3s;
+  text-style: italic 0.3s;
+}
+
+/* Чергування над/під лінією */
+.timeline.alternate .event:nth-child(odd) .year {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline.alternate .event:nth-child(even) .year {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
