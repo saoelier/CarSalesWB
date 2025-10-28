@@ -21,8 +21,14 @@
             </div>
         </div>
      <h1>Car Sales Map</h1>
-<select id="yearSelect"></select>
 
+
+<select id="countrySelect">
+  <option value="world">Worldwide</option>
+</select>
+
+<canvas id="salesChart" width="800" height="400"></canvas>
+<select id="yearSelect"></select>
 <!-- Легенда карти -->
 <div id="legend">
   <div class="legend-item"><div class="legend-color" style="background:#800026"></div>10M+</div>
@@ -37,8 +43,10 @@
 
 <div id="map"></div>
 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+    <script src="chart.js"></script>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
