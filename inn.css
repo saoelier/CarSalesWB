@@ -1,0 +1,160 @@
+=.background {
+  width: 100%;
+  padding: 90px 20px 100px 20px; /* трохи більше простору */
+  margin: 0;
+  position: relative;
+  border-radius: 0 0 200px 200px;
+  background-color: #0E1033;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Заголовок — трохи більший */
+.background-title {
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 2.8rem; /* було 2.5rem */
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  z-index: 2;
+}
+
+/* Контейнер кнопок */
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px; /* трохи більша відстань */
+  max-width: 850px;
+  z-index: 2;
+}
+
+/* Кнопки — трохи крупніше */
+.link-btn {
+  flex: 1 1 calc(25% - 18px);
+  min-width: 160px;
+  text-decoration: none;
+  color: white;
+  background-color: #030458;
+  border-radius: 10px;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 1.1rem; /* було 1rem */
+  text-align: center;
+  padding: 14px 0; /* було 12px */
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  background-color: #151784;
+}
+
+.info-section {
+  background-color: #ffffff;      /* фон для контенту після бекграунду */
+  color: black;                 /* темний текст для контрасту */
+  margin-top: 0;               /* щоб було відступлення від синього фону */
+  padding: 30px 20px 30px 20px;   /* внутрішні відступи */
+  border-radius: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.info-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.info-section p {
+    margin-bottom: 15px;
+}
+
+.topic-section {
+  background-color: #f9f9f9;
+  padding: 30px 20px;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 40px auto 0 auto;
+}
+.topic-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #030458;
+}
+.topic-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* Адаптив */
+@media (max-width: 700px) {
+  .link-btn {
+    flex: 1 1 calc(50% - 18px);
+  }
+}
+
+@media (max-width: 400px) {
+  .link-btn {
+    flex: 1 1 100%;
+  }
+}
+
+.tgrid {
+    display: flex;
+    flex-wrap: wrap;           /* дозволяє переносити на наступний рядок при вузьких екранах */
+    justify-content: center;   /* центрує рядок горизонтально */
+    gap: 20px;                 /* відстань між елементами */
+    width: 90%;
+    margin: 0 auto;
+   padding: 20px 0;
+}
+
+.tgrid-item {
+    background-color: #0E1033;
+    border-radius: 12px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex: 1 1 250px;           /* мінімальна ширина 250px, елементи діляться по рядку */
+    max-width: 300px;           /* можна підкоригувати */
+}
+
+.tgrid-item img {
+    width: 100%;
+    height: auto;
+    max-height: 30vh; 
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.tgrid-item p {
+    color: white;
+    font-family: 'Roboto Nova', sans-serif;
+    font-size: 1.2rem;
+    margin: 10px 6px;
+}
+
+.tgrid-item:hover {
+    transform: translateY(-5px);
+    background-color: #030458;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.tgrid a {
+    text-decoration: none;
+    color: inherit;
+}
