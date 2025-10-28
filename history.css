@@ -93,7 +93,7 @@ html {
 /* Роки (позначення) */
 .year {
   display: block;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   cursor: pointer;
   transition: color 0.3s, transform 0.3s, font-size 0.3s;
   color: white; /* стандартний колір */
@@ -117,7 +117,7 @@ html {
 .event:hover .year {
   color: #003e91;
   transform: translateX(-50%) scale(3); /* масштаб і центр по X */
-  font-size: 3rem; /* збільшення розміру */
+  font-size: 2.5rem; /* збільшення розміру */
   font-style: italic; /* курсив */
 }
 
@@ -138,24 +138,27 @@ html {
 
 /* Блоки подій під таймлайном */
 .events-below {
-  width: 90%;
-  max-width: 1200px;
-  margin: 420px 0 0 150px; /* верхній, правий, нижній, лівий */
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center; /* вирівнюємо всі блоки по центру */
   gap: 40px;
+  margin-top: 420px;
 }
 
 .event-block {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 30px; /* відстань між елементами */
-  padding: 25px 20px; /* внутрішній відступ */
-  border-radius: 12px; /* округлені кути */
-  background-color: #f5f5f5; /* легкий фон для контрасту */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* тінь для глибини */
+  gap: 30px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 90%;
+  max-width: 1000px; /* фіксована ширина блоку */
+  box-sizing: border-box;
 }
 
 .event-block:hover {
@@ -190,11 +193,11 @@ html {
 
 /* Зображення в блоці події */
 .image img {
-  width: auto;
-  max-height: 180px; /* максимально дозволена висота */
+  width: 300px;       /* трішки більша ширина */
+  height: 180px;      /* пропорційна висота */
   border-radius: 10px;
+  object-fit: cover;  /* обрізає, щоб заповнити квадрат */
   flex-shrink: 0;
-  object-fit: cover;
 }
 
 /* Кнопка повороту вгору сторінки */
