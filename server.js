@@ -5,25 +5,25 @@ const Database = require('better-sqlite3');
 const app = express();
 app.use(cors());
 
-// Подключаем базу carsalesmarket
-const db = new Database('./carsalesmarket.db'); // <-- здесь имя файла базы
+// Підключаємо базу carsalesmarket
+const db = new Database('./carsalesmarket.db'); // <-- тут ім'я файлу бази
 
-// Проверка подключённых таблиц
+// Перевірка підключених таблиць
 try {
   const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
-  console.log("📦 Подключена база данных. Таблицы:", tables.map(t => t.name));
+  console.log("Connected database. Tables:", tables.map(t => t.name));
 } catch (err) {
-  console.error("Ошибка при подключении базы:", err);
+  console.error("Error connecting to database:", err);
 }
 
-// Эндпоинт: получить продажи за определённый год
+// Ендпоінт: отримати продажі за певний рік
 app.get('/sales/:year', (req, res) => {
   const year = parseInt(req.params.year);
   const rows = db.prepare('SELECT * FROM sales WHERE year = ?').all(year);
   res.json(rows);
 });
 
-// Эндпоинт: список всех годов в базе
+// Ендпоінт: список усіх років у базі
 app.get('/years', (req, res) => {
   const rows = db.prepare('SELECT DISTINCT year FROM sales ORDER BY year').all();
   res.json(rows.map(r => r.year));
@@ -32,5 +32,5 @@ app.get('/years', (req, res) => {
 // Запуск сервера
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен: http://localhost:${PORT}`);
+  console.log(`Server running: http://localhost:${PORT}`);
 });
