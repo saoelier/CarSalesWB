@@ -1,4 +1,4 @@
-/* market.css */
+/* ===== СТАРІ СТИЛІ ===== */
 
 /* Контейнер сторінки — вирівнюємо по центру і додаємо відступи */
 body {
@@ -7,100 +7,155 @@ body {
     background: #f6f8fa;
     color: #222;
 }
+
 .menu {
-        display: flex;                  /* щоб елементи йшли в ряд */
+    display: flex; /* щоб елементи йшли в ряд */
 }
 
 .menu-item {
-        text-decoration: none;
-        color: white;
-        font-family: 'Roboto Nova', sans-serif;
-        font-size: 20px;
-        padding: 20px 16px;              /* внутрішній відступ — щоб прямокутник був більшим за текст */
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto Nova', sans-serif;
+    font-size: 20px;
+    padding: 20px 16px;
 }
 
 .menu-item:hover {
-        background-color:  #0E1033;  
-        border: 2px solid white;  /* колір фону при наведенні */
-        border-radius: 8px;       /* округлення кутів */
+    background-color:  #0E1033;
+    border: 2px solid white;
+    border-radius: 8px;
 }
-/* Заголовок і селект трохи відступають від країв */
+
+/* Заголовок */
 h1 {
-     color: white;                       /* білий текст */
+    color: white;
     font-family: 'Roboto Nova', sans-serif;
     font-size: 4rem;
-    text-align: center;                 /* по центру */
-    background-color: #0E1033;          /* темно-синій фон */
-    padding: 20px 0;                    /* вертикальні відступи */
-    width: 100%;                        /* займає всю ширину */
-    box-sizing: border-box;             /* відступи враховуються у ширину */
+    text-align: center;
+    background-color: #0E1033;
+    padding: 20px 0;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0; 
 }
-#map { 
-        height: 80vh; 
-        width: 100%; 
-        border-radius: 15px; /* округлені кути */
-        overflow: hidden;
-        margin-bottom: 10px;
+
+/* ===== КАРТА + ГРАФІК ===== */
+
+/* Обгортка для двох колонок: карта ліворуч, графік праворуч */
+.map-chart-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 90%;
+    max-width: 1400px;
+    margin: 20px auto;
+    align-items: flex-start;
+    flex-wrap: wrap; /* на мобільних колонки стануть вертикально */
 }
 
-#legend {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 10px;
-        font-family: Arial, sans-serif;
-        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+/* Колонки */
+.map-column,
+.chart-column {
+    flex: 1 1 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.legend-item {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-}
-
-.legend-color {
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
-        border: 1px solid #999;
-}
-
-/* Селектор року — акуратно поверх карти або над нею */
+/* Селектори */
+#countrySelect,
 #yearSelect {
-    margin: 12px 16px;
     padding: 8px 12px;
     font-size: 14px;
     border-radius: 8px;
     border: 1px solid rgba(0,0,0,0.12);
     background: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    width: 100%;
 }
 
-/* Обгортка карти — додаємо скруглення, тінь і overflow:hidden,
-     щоб тайли leaflet обрізались по скруглених кутах */
+/* Карта */
+.map-container {
+    position: relative;
+}
+
 #map {
-    width: calc(100% - 32px);   /* щоб залишити відступи ліворуч/праворуч */
-    max-width: 1400px;          /* не розтягувати занадто сильно на великій ширині */
-    height: calc(100vh - 160px);/* робить карту адаптивною; підправ під дизайн */
-    margin: 0 auto 32px;        /* центрируємо і даємо відступ знизу */
-    border-radius: 14px;        /* ось округлення */
-    overflow: hidden;           /* важливо — обрізає тайли по кутах */
+    width: 100%;
+    height: 500px;
+    border-radius: 14px;
+    overflow: hidden;
     border: 1px solid rgba(0,0,0,0.08);
     box-shadow: 0 6px 18px rgba(20,30,50,0.08);
     background: linear-gradient(180deg, #ffffff, #f7fafc);
 }
 
-/* Мобільна версія — карта вище, селект всередині контейнера */
-@media (max-width: 720px) {
-    h1 { font-size: 20px; margin: 12px; }
-    #yearSelect { margin: 10px 12px; width: calc(100% - 24px); }
-    #map { width: calc(100% - 24px); height: calc(70vh); border-radius: 12px; }
+/* Легенда */
+#legend {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    max-width: 90%;
 }
 
-/* Невелике доопрацювання для popup L.Popup — робимо їх трішки акуратнішими */
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #999;
+    flex-shrink: 0;
+}
+
+/* Графік */
+#salesChart {
+    width: 100%;
+    height: 500px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(20,30,50,0.08);
+    padding: 10px;
+}
+
+/* ===== Мобільна версія ===== */
+@media (max-width: 768px) {
+    .map-chart-wrapper {
+        flex-direction: column; /* вертикально */
+        gap: 20px;
+        width: 95%;
+    }
+
+    #map,
+    #salesChart {
+        height: 400px;
+    }
+
+    #legend {
+        position: static; /* під картою */
+        max-width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    #countrySelect,
+    #yearSelect {
+        width: 100%;
+    }
+}
+
+/* ===== Інші старі стилі ===== */
 .leaflet-popup-content-wrapper {
     border-radius: 8px;
     box-shadow: 0 6px 14px rgba(20,30,50,0.12);

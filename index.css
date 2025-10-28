@@ -359,3 +359,69 @@ body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
     text-align: left; /* на маленьких екранах підпис зліва */
   }
 }
+.footer {
+    width: 100%;
+    background-color: #030458;
+    color: white;
+    padding: 20px 40px; /* менший padding зверху/знизу */
+    border-radius: 50px 50px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto Nova', sans-serif;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: left; /* лого зліва, лінки по центру */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-bottom: 10px; /* менше відступу знизу */
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem; /* трохи менший шрифт */
+    margin: 0;
+}
+
+.footer-links {
+    display: flex; /* лінки в рядок */
+    gap: 20px;     /* відстань між лінками */
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+
+}
+
+.footer-links a:hover {
+    weight: bold;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8rem; /* трохи менший текст */
+    color: #b0b0b0;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}

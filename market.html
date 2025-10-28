@@ -23,30 +23,56 @@
      <h1>Car Sales Map</h1>
 
 
-<select id="countrySelect">
-  <option value="world">Worldwide</option>
-</select>
+<div class="map-chart-wrapper">
+    <!-- ЛІВА КОЛОНКА: КАРТА -->
+    <div class="map-column">
+        <div class="map-container">
+            <select id="yearSelect"></select>
+            <div id="map"></div>
+            <div id="legend">
+                <div class="legend-item"><div class="legend-color" style="background:#004080"></div>10M+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#005FCC"></div>5M+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#1A75E6"></div>1M+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#4D94EB"></div>500k+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#80B3F0"></div>100k+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#B3D1F5"></div>50k+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#E6F0FA"></div>0+</div>
+                <div class="legend-item"><div class="legend-color" style="background:#ccc"></div>No Data</div>
+            </div>
+        </div>
+    </div>
 
-<canvas id="salesChart" width="800" height="400"></canvas>
-<select id="yearSelect"></select>
-<!-- Легенда карти -->
-<div id="legend">
-  <div class="legend-item"><div class="legend-color" style="background:#800026"></div>10M+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#BD0026"></div>5M+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#E31A1C"></div>1M+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#FC4E2A"></div>500k+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#FD8D3C"></div>100k+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#FEB24C"></div>50k+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#FED976"></div>0+</div>
-  <div class="legend-item"><div class="legend-color" style="background:#ccc"></div>No Data</div>
+    <!-- ПРАВА КОЛОНКА: ГРАФІК -->
+    <div class="chart-column">
+      <select id="countrySelect">
+            <option value="world">Worldwide</option>
+        </select>
+        <canvas id="salesChart"></canvas>
+    </div>
 </div>
 
-<div id="map"></div>
+
+</div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
     <script src="chart.js"></script>
-
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h3>CarWorld.com</h3>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="history.html">History of car market</a>
+      <a href="market.html">Car market statistics</a>
+      <a href="inn.html">Innovations and technologies</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 CarWorld.com. All rights reserved.
+  </div>
+</footer>
 </body>
 </html>
