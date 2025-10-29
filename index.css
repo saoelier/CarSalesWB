@@ -1,60 +1,85 @@
 /* ===== ХЕДЕР ===== */
+/* Контейнер шапки сайту: фіксована висота, темний фон, елементи вирівняні вправо */
 .header {
-    width: 100%;                    
-    height: 50px;                   
-    background-color: #030458;      
+  width: 100%;                    
+  height: 50px;                   
+  background-color: #030458;      
 
-    display: flex;                  
-    justify-content: flex-end;      
-    align-items: center;            
-    padding-right: 30px;    
-      position: relative; 
-    z-index: 10;      
+  display: flex;                  
+  justify-content: flex-end;      
+  align-items: center;            
+  padding-right: 30px;    
+  position: relative; 
+  z-index: 10;      /* підняти над фоновими елементами */
 }
+
+/* Плавний скрол при переходах по якорях */
 html {
   scroll-behavior: smooth;
 }
+
+// якось прибрати чорну лінію над моделвьюверем
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /* ===== МЕНЮ НАВІГАЦІЇ ===== */
+/* Меню розташоване в рядок */
 .menu {
-    display: flex;                  /* щоб елементи йшли в ряд */
+  display: flex;                  /* щоб елементи йшли в ряд */
 }
 
+
+/* Окремі пункти меню: зовнішній вигляд і відступи */
 .menu-item {
-    text-decoration: none;
-    color: white;
-    font-family: 'Roboto Nova', sans-serif;
-    font-size: 20px;
-    padding: 20px 16px;              /* внутрішній відступ — щоб прямокутник був більшим за текст */
+  text-decoration: none;
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 20px;
+  padding: 20px 16px;              /* внутрішній відступ — щоб прямокутник був більшим за текст */
 }
 
+/* Ефект при наведенні на пункт меню */
 .menu-item:hover {
-    background-color:  #0E1033;  
-    border: 2px solid white;  /* колір фону при наведенні */  /* м'яке світіння навколо прямокутника */
-    border-radius: 8px;
-
+  background-color:  #0E1033;  
+  border: 2px solid white;  /* виділення пункту при наведенні */
+  border-radius: 8px;
 }
 
+/* Фоновий шар вгорі сторінки — великий декоративний блок */
 .background {
-    width: 100%;
-    height: 1100px;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    border-radius: 0 0 200px 200px;
-    background-color: #0E1033;
-    z-index: 1;
+  width: 100%;
+  height: 1100px;
+  padding: 0;
+  margin: 0;
+  position: absolute;             /* розташований під контентом */
+  border-radius: 0 0 200px 200px; /* округлення внизу */
+  background-color: #0E1033;
+  z-index: 1;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto Nova', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Nova', sans-serif;
 }
 
+/* Прихований елемент для AR або підказок: зараз не відображається */
 #ar-prompt {
-    display: none;
+  display: none;
 }
 
+model-viewer {
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* Контейнер головного контенту: ліво-праве розміщення, адаптивний */
 .container {
   display: flex;
   justify-content: space-between;   /* текст ліворуч, картинка праворуч */
@@ -66,6 +91,7 @@ body {
   gap: 60px;
 }
 
+/* Великий заголовок на лівій частині */
 .title {
   color: white;
   font-family: 'Roboto Nova', sans-serif;
@@ -73,43 +99,49 @@ body {
   flex: 1;                       /* щоб займав ліву частину */
   min-width: 300px;
 }
+
+/* Кнопка початку: вигляд та інтерактивність */
 .start-btn {
-    margin-top: 30px;               /* відступ зверху */
-    display: inline-block;           /* щоб кнопка була “рядковою” і займала розмір контенту */
-    padding: 12px 24px;              /* внутрішній відступ зверху/знизу та з боків */
-    text-decoration: none;           /* прибираємо підкреслення */
-    color: white;                     /* колір тексту */
-    background-color: #030458;        /* фон, як у меню хедера */
-    border-radius: 8px;               /* закруглені кути */
-    font-family: 'Roboto Nova', sans-serif; /* шрифт */
-    font-size: 1.2rem;                /* розмір тексту */        /* плавна анімація при наведенні */
-    width: fit-content;               /* ширина під текст */
-    cursor: pointer;                  /* показує, що це кнопка */
+  margin-top: 30px;               /* відступ зверху */
+  display: inline-block;          /* кнопка займає розмір контенту */
+  padding: 12px 24px;             /* внутрішній відступ */
+  text-decoration: none;          /* прибираємо підкреслення */
+  color: white;                   /* колір тексту */
+  background-color: #030458;      /* фон, як у меню хедера */
+  border-radius: 8px;             /* закруглені кути */
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 1.2rem;              /* розмір тексту */
+  width: fit-content;             /* ширина під текст */
+  cursor: pointer;                /* показує, що це кнопка */
 }
 
+/* Ефект наведення для кнопки */
 .start-btn:hover {
-    background-color: #0E1033;        /* колір фону при наведенні */
-    border: 2px solid white;        /* обведення при наведенні для ефекту прямокутника */
+  background-color: #0E1033;        /* колір фону при наведенні */
+  border: 2px solid white;          /* обведення при наведенні для ефекту прямокутника */
 }
+
+/* Блок зображення праворуч: займає частину простору контейнера */
 .img1 { 
-    flex: 1;                          /* картинка займає праву частину */
+  flex: 1;                          /* картинка займає праву частину */
   display: flex;
   justify-content: flex-end; 
   border-radius: 10px;
 }
 
 .img1 img {
-    width: 100%;
+  width: 100%;
   max-width: 1500px;                 /* обмеження для великих екранів */
-  height: 1000px;                     /* зберігає пропорції */
+  height: 1000px;                    /* фіксована висота для макету (можна зробити адаптивною) */
   border-radius: 10px;
 }
 
+/* Друге визначення .background — перекриває або доповнює перше.
+   Зверніть увагу: якщо двічі визначено той самий селектор, властивості з другого блоку застосуються після першого. */
 .background {
   width: 100%;
-
-  height: auto;
-  border-radius: 0 0 150px 150px;
+  height: auto;                       /* змінено на авто, щоб адаптувати висоту до вмісту */
+  border-radius: 0 0 150px 150px;     /* інше округлення, воно перекриє попереднє */
   background-color: #0E1033;
   display: flex;
   flex-direction: column;
@@ -120,6 +152,7 @@ body {
 }
 
 /* ===== ПРОМО-БЛОК ===== */
+/* Розміщення промо-контенту по центру з адаптивним відступом між елементами */
 .promo {
   display: flex;
   justify-content: center;       /* по центру екрана */
@@ -132,7 +165,7 @@ body {
   margin-top: 50px;
 }
 
-/* ===== ТЕКСТ ===== */
+/* Текстова частина промо: вертикальне розташування */
 .promo-text {
   display: flex;
   flex-direction: column;
@@ -142,6 +175,7 @@ body {
   min-width: 40%;
 }
 
+/* Основний параграф в промо — адаптивний шрифт */
 .pm {
   color: white;
   font-family: 'Roboto Nova', sans-serif;
@@ -151,6 +185,7 @@ body {
 }
 
 /* ===== СТРІЛКА ===== */
+/* Маленьке декоративне зображення-стрілка з анімацією */
 .img2 {
   width: 10vw;                    /* адаптивна ширина стрілки */
   height: auto;
@@ -158,66 +193,75 @@ body {
   animation: bounce 2s infinite;
 }
 
-/* Анімація стрілки */
+/* Анімація "підстрибування" стрілки */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(10px); }
 }
 
+/* ===== Сітка з картками ===== */
+/* Гнучка грід-сітка: мінімальна ширина карти 250px, заповнює простір */
 .frgrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
+/* Окрема картка: фон, округлення, вирівнювання контенту */
 .grid-item {
-    background-color: #0E1033;
-    border-radius: 12px;
-    text-align: center;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #0E1033;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Зображення в картці: адаптивні параметри та обмеження висоти */
 .grid-item img {
-    width: 100%;
-    height: auto;
-    max-height: 30vh; /* адаптивно під висоту екрану */
-    object-fit: cover;
-    border-radius: 12px 12px 0 0;
+  width: 100%;
+  height: auto;
+  max-height: 30vh; /* адаптивно під висоту екрану */
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
+/* Текст у картці */
 .grid-item p {
-    color: white;
-    font-family: 'Roboto Nova', sans-serif;
-    font-size: 1.2rem;
-    margin: 10px 0;
+  color: white;
+  font-family: 'Roboto Nova', sans-serif;
+  font-size: 1.2rem;
+  margin: 10px 0;
 }
 
+/* Ефект при наведенні на картку — підйом, тінь і зміна фону */
 .grid-item:hover {
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-    background-color: #030458;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  background-color: #030458;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 }
 
+/* Лінки за замовчуванням не підкреслені і наслідують колір батька */
 a{
-    text-decoration: none;
-    color: inherit;}
+  text-decoration: none;
+  color: inherit;
+}
 
 /* ===== Анімація появи ===== */
+/* Ключові кадри для плавної появи елементів знизу */
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Анімація для всіх елементів окрім хедера */
+/* Застосування анімації до основних блоків (крім хедера) */
 .container,
 .text-block,
 .title,
@@ -231,18 +275,8 @@ a{
   animation: fadeIn 1s forwards;
 }
 
-/* 
-.container { animation-delay: 0.2s; }
-.text-block { animation-delay: 0.4s; }
-.title { animation-delay: 0.6s; }
-.pm { animation-delay: 0.8s; }
-.start-btn { animation-delay: 1s; }
-.img1 { animation-delay: 0.6s; }
-.promo { animation-delay: 1.2s; }
-.promo-text { animation-delay: 1.4s; }
-.img2 { animation-delay: 1.6s; }*/
-
-/* Початковий стан — прихований і трохи знизу */
+/* Раніше були індивідуальні затримки — можна розкоментувати для каскадності */
+/* Початковий стан — прихований і трохи знизу для промо-блоку */
 .promo,
 .promo-text,
 .img2 {
@@ -251,51 +285,52 @@ a{
   transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Використовуємо псевдоклас, щоб анімація спрацювала, коли елемент приблизно доходить до середини вікна */
+/* Використовується :has() для запуску анімації, коли .promo існує всередині .background.
+   Зауваження: підтримка :has() залежить від браузера (новіші версії Chrome, Safari, Edge підтримують). */
 .background:has(.promo) .promo {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.3s;
 }
-
 .background:has(.promo) .promo-text {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.6s;
 }
-
 .background:has(.promo) .img2 {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.9s;
 }
 
-/* ===== Анімація появи гріду по скролу ===== */
+/* ===== Коментований код для появи гріду по скролу ===== */
+/* Тут закоментовано приклади анімації появи .grid-item по черзі.
+   Якщо бажаєте — можна розкоментувати і додати скрипт або використовувати IntersectionObserver для контрольованого запуску. */
 /*
 .grid-item {
   opacity: 0;
   transform: translateY(40px);
   transition: 
-    opacity 0.8s ease, 
-    transform 0.8s ease;
+  opacity 0.8s ease, 
+  transform 0.8s ease;
 }
 
-/* коли сітка .frgrid потрапляє у вікно — елементи по одному проявляються */
-/*
 body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
 .background:has(.frgrid) .grid-item {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* каскадна поява кожного блоку */ /*
 .frgrid .grid-item:nth-child(1) { transition-delay: 0.2s; }
 .frgrid .grid-item:nth-child(2) { transition-delay: 0.4s; }
 .frgrid .grid-item:nth-child(3) { transition-delay: 0.6s; }
 .frgrid .grid-item:nth-child(4) { transition-delay: 0.8s; }
 .frgrid .grid-item:nth-child(5) { transition-delay: 1s; }
-.frgrid .grid-item:nth-child(6) { transition-delay: 1.2s; }*/
+.frgrid .grid-item:nth-child(6) { transition-delay: 1.2s; }
+*/
 
+/* ===== Блок "Про нас" ===== */
+/* Секція прив'язана до ширини вікна, текст і підпис з анімацією */
 #about {
   width: 100%;
   max-width: 100vw;
@@ -316,13 +351,13 @@ body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
   max-width: 1000px;
   width: 100%;
   text-align: left;
-  animation: fadeIn 1.5s ease forwards;
+  animation: fadeIn 1.5s ease forwards; /* поступова поява контенту */
 }
 
 .about-content h2 {
   font-size: 2.5rem;
   margin-bottom: 30px;
-  border-left: 5px solid #0E1033;
+  border-left: 5px solid #0E1033; /* декоративна лінія перед заголовком */
   padding-left: 15px;
 }
 
@@ -333,6 +368,7 @@ body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
 }
 
 /* ===== ПІДПИС ВНИЗУ ===== */
+/* Підпис під секцією "Про нас" — імітація підпису праворуч */
 .about-signature {
   font-size: 0.95rem;
   font-style: italic;
@@ -344,28 +380,30 @@ body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
   animation: fadeIn 1.5s ease forwards;
 }
 
-/* ===== Анімація ===== */
+/* ===== Анімація (запасний варіант ключових кадрів) ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Адаптив ===== */
+/* При менших екранах зменшуємо розміри заголовків і вирівнюємо підпис ліворуч */
 @media (max-width: 768px) {
   .about-content h2 {
-    font-size: 2rem;
+  font-size: 2rem;
   }
   .about-signature {
-    text-align: left; /* на маленьких екранах підпис зліва */
+  text-align: left; /* на маленьких екранах підпис зліва */
   }
 }
 
-/* Кнопка повороту вгору сторінки */
+/* ===== Кнопка повороту вгору сторінки ===== */
+/* Фіксована кнопка в правому нижньому кутку вікна */
 #backToTop {
   position: fixed;      /* плаваючий внизу */
   bottom: 30px;
   right: 30px;
-  z-index: 100;
+  z-index: 100;         /* поверх більшості елементів */
   background-color: #0E1033;
   color: white;
   padding: 10px 15px;
@@ -375,74 +413,78 @@ body:has(.frgrid:is(:hover, :focus-within, :active)) .grid-item,
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
 }
-
 #backToTop:hover {
   background-color: #003e91;
   transform: translateY(-3px);
 }
+
+/* ===== Футер ===== */
+/* Нижня частина сайту: фон, округлення зверху, центрований контент */
 .footer {
-    width: 100%;
-    background-color: #030458;
-    color: white;
-    padding: 20px 40px; /* менший padding зверху/знизу */
-    border-radius: 50px 50px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Roboto Nova', sans-serif;
-    box-sizing: border-box;
+  width: 100%;
+  background-color: #030458;
+  color: white;
+  padding: 20px 40px; /* менший padding зверху/знизу */
+  border-radius: 50px 50px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto Nova', sans-serif;
+  box-sizing: border-box;
 }
 
+/* Контейнер у футері: лого ліворуч, посилання — по центру/справа */
 .footer-container {
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: left; /* лого зліва, лінки по центру */
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 100px;
-    margin-bottom: 10px; /* менше відступу знизу */
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: left; /* лого зліва, лінки по центру */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 100px;
+  margin-bottom: 10px; /* менше відступу знизу */
 }
 
 .footer-logo h3 {
-    font-size: 1.5rem; /* трохи менший шрифт */
-    margin: 0;
+  font-size: 1.5rem; /* трохи менший шрифт */
+  margin: 0;
 }
 
 .footer-links {
-    display: flex; /* лінки в рядок */
-    gap: 20px;     /* відстань між лінками */
+  display: flex; /* лінки в рядок */
+  gap: 20px;     /* відстань між лінками */
 }
 
 .footer-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
 }
 
 .footer-links a:hover {
-    weight: bold;
-    text-decoration: underline;
+  weight: bold; /* намагайтеся використовувати font-weight замість weight */
+  text-decoration: underline;
 }
 
+/* Низ футера: дрібний текст з відтінком сірого */
 .footer-bottom {
-    text-align: center;
-    font-size: 0.8rem; /* трохи менший текст */
-    color: #b0b0b0;
+  text-align: center;
+  font-size: 0.8rem; /* трохи менший текст */
+  color: #b0b0b0;
 }
 
-/* ===== Адаптив ===== */
+/* ===== Адаптив для футера ===== */
+/* На маленьких екранах футер стає вертикальним та центрується */
 @media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 
-    .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 }

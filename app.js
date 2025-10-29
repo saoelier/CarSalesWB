@@ -24,28 +24,27 @@ function getColor(d) {
 // === Стиль для країн ===
 function style(feature) {
   const code = feature.properties.ISO_A3; // трилітерний код країни
-  const sales = salesData[code] || 0;
+  const sales = salesData[code] || 0; // отримуємо дані продажів для країни
   return {
-    fillColor: getColor(sales),
-    weight: 1,
-    color: '#fff',
-    fillOpacity: 0.7
+    fillColor: getColor(sales), // колір заповнення
+    weight: 1, // товщина межі
+    color: '#fff', // колір межі
+    fillOpacity: 0.7 // прозорість заповнення
   };
 }
 
 // === Підсвічування при наведенні ===
 function highlightFeature(e) {
-  const layer = e.target;
-  // властивості можуть містити різні поля з кодом країни,
-  // тут намагаємось використати той, що є в geojson
-  const code = (layer.feature.properties.adm0_a3_ar || layer.feature.properties.ISO_A3 || "").toUpperCase();
-  const country = layer.feature.properties.admin;
-  const sales = salesData[code] || 0;
+  const layer = e.target; // отримуємо шар, на який наведено
+  const code = (layer.feature.properties.adm0_a3_ar || layer.feature.properties.ISO_A3 || "").toUpperCase(); // код країни
+  const country = layer.feature.properties.admin; // назва країни
+  const sales = salesData[code] || 0; // дані продажів для країни
 
   // Відкриваємо підказку (labels на англійській)
   layer.bindPopup(`<b>${country}</b><br>Cars sold: ${sales.toLocaleString()}`).openPopup();
 }
 
+// === Скидання підсвічування ===
 function resetHighlight(e) {
   // Можна скинути стиль або закрити підказку тут, якщо потрібно
   // geojsonLayer.resetStyle(e.target);
@@ -55,8 +54,8 @@ function resetHighlight(e) {
 // === Події для кожного гео-елемента ===
 function onEachFeature(feature, layer) {
   layer.on({
-    mouseover: highlightFeature,
-    mouseout: resetHighlight
+    mouseover: highlightFeature, // подія при наведенні
+    mouseout: resetHighlight // подія при виході
   });
 }
 
@@ -90,7 +89,7 @@ async function loadMap(year = 2024) {
       const country = layer.feature.properties.admin;
       const sales = salesData[code] || 0;
 
-      const colourOverlay = getColor(sales);
+      const colourOverlay = getColor(sales); // отримуємо колір для шару
       layer.setStyle({
         fill: true,
         fillColor: colourOverlay,
@@ -99,53 +98,55 @@ async function loadMap(year = 2024) {
         weight: 1
       });
     });
-    // === Додаємо окремий шар для Криму як частину України ===
-const crimeaGeoJson = {
-  "type": "Feature",
-  "properties": {
-    "name": "Crimea"
-  },
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [[
-      [33.435988094713366, 45.971917370797485],
-      [33.69946184910907, 46.219572831556434],
-      [34.41040172853718, 46.005162391728845],
-      [34.73201738827845, 45.96566573176062],
-      [34.861792128174045, 45.76818243191957],
-      [35.01265897004737, 45.73772519982549],
-      [35.02078779474607, 45.65121898048466],
-      [35.51000857925311, 45.40999339454612],
-      [36.52999799983019, 45.46998973243717],
-      [36.334712762199274, 45.11321564389402],
-      [35.239999220528205, 44.93999624285175],
-      [33.882511020652885, 44.361478583344194],
-      [33.32642093276013, 44.564877020844904],
-      [33.546924269349404, 45.03477081967486],
-      [32.4541744321055, 45.327466132176085],
-      [32.63080447767919, 45.51918569597899],
-      [33.58816206231842, 45.85156850848023],
-      [33.435988094713366, 45.971917370797485]
-    ]]
-  },
-  "properties": {
-    "admin": "Ukraine",
-    "ISO_A3": "UKR"
-  }
-}
 
-L.geoJson(crimeaGeoJson, {
-  style: {
-    fillColor: getColor(salesData["UKR"] || 0),
-    weight: 1,
-    color: '#fff',
-    fillOpacity: 0.7
-  },
-  onEachFeature
-}).addTo(map);
+    // === Додаємо окремий шар для Криму як частину України ===
+    const crimeaGeoJson = {
+      "type": "Feature",
+      "properties": {
+        "name": "Crimea"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [33.435988094713366, 45.971917370797485],
+          [33.69946184910907, 46.219572831556434],
+          [34.41040172853718, 46.005162391728845],
+          [34.73201738827845, 45.96566573176062],
+          [34.861792128174045, 45.76818243191957],
+          [35.01265897004737, 45.73772519982549],
+          [35.02078779474607, 45.65121898048466],
+          [35.51000857925311, 45.40999339454612],
+          [36.52999799983019, 45.46998973243717],
+          [36.334712762199274, 45.11321564389402],
+          [35.239999220528205, 44.93999624285175],
+          [33.882511020652885, 44.361478583344194],
+          [33.32642093276013, 44.564877020844904],
+          [33.546924269349404, 45.03477081967486],
+          [32.4541744321055, 45.327466132176085],
+          [32.63080447767919, 45.51918569597899],
+          [33.58816206231842, 45.85156850848023],
+          [33.435988094713366, 45.971917370797485]
+        ]]
+      },
+      "properties": {
+        "admin": "Ukraine", // країна
+        "ISO_A3": "UKR" // код країни
+      }
+    }
+
+    // Додаємо шар для Криму
+    L.geoJson(crimeaGeoJson, {
+      style: {
+        fillColor: getColor(salesData["UKR"] || 0), // колір заповнення для Криму
+        weight: 1,
+        color: '#fff',
+        fillOpacity: 0.7
+      },
+      onEachFeature
+    }).addTo(map);
 
   } catch (err) {
-    console.error("❌ Error loading map:", err);
+    console.error("❌ Error loading map:", err); // обробка помилок
   }
 }
 
@@ -172,16 +173,16 @@ async function loadYears() {
     select.value = defaultYear;
 
     select.addEventListener('change', e => {
-      const year = parseInt(e.target.value);
-      loadMap(year);
+      const year = parseInt(e.target.value); // отримуємо вибраний рік
+      loadMap(year); // завантажуємо карту для вибраного року
     });
 
-    await loadMap(defaultYear);
+    await loadMap(defaultYear); // завантажуємо карту для року за замовчуванням
 
   } catch (err) {
-    console.error("❌ Error loading years:", err);
+    console.error("❌ Error loading years:", err); // обробка помилок
   }
 }
 
 // === Запуск ===
-loadYears();
+loadYears(); // запускаємо завантаження років

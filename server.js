@@ -1,36 +1,41 @@
+// server.js
+// ========== ПІДКЛЮЧЕННЯ МОДУЛІВ ==========
 const express = require('express');
 const cors = require('cors');
 const Database = require('better-sqlite3');
 
+// ========== НАЛАШТУВАННЯ EXPRESS ==========
 const app = express();
-app.use(cors());
+app.use(cors()); // Дозволяємо CORS-запити
 
-// Підключаємо базу carsalesmarket
-const db = new Database('./carsalesmarket.db'); // <-- тут ім'я файлу бази
+// ========== ПІДКЛЮЧЕННЯ ДО БАЗИ ДАНИХ ==========
+// Створюємо з'єднання з SQLite базою даних
+const db = new Database('./carsalesmarket.db');
 
-// Перевірка підключених таблиць
+// Перевіряємо підключення та виводимо список таблиць
 try {
   const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
-  console.log("Connected database. Tables:", tables.map(t => t.name));
+  console.log("Підключено до бази даних. Наявні таблиці:", tables.map(t => t.name));
 } catch (err) {
-  console.error("Error connecting to database:", err);
+  console.error("Помилка підключення до бази даних:", err);
 }
 
-// Ендпоінт: отримати продажі за певний рік
+// ========== API ЕНДПОІНТИ ==========
+// Отримання даних про продажі за вказаний рік
 app.get('/sales/:year', (req, res) => {
   const year = parseInt(req.params.year);
   const rows = db.prepare('SELECT * FROM sales WHERE year = ?').all(year);
   res.json(rows);
 });
 
-// Ендпоінт: список усіх років у базі
+// Отримання списку всіх доступних років
 app.get('/years', (req, res) => {
   const rows = db.prepare('SELECT DISTINCT year FROM sales ORDER BY year').all();
   res.json(rows.map(r => r.year));
 });
 
-// Запуск сервера
+// ========== ЗАПУСК СЕРВЕРА ==========
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running: http://localhost:${PORT}`);
+  console.log(`Сервер запущено на http://localhost:${PORT}`);
 });

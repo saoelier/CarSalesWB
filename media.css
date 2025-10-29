@@ -1,89 +1,31 @@
+/* ====== 📱 МОБІЛЬНІ ПРИСТРОЇ ====== */
 @media (max-width: 768px) {
-    .img1 img {
-        width: 300px;
-        height: 250px;
-    }
+  /* Зображення */
+  .img1 img {
+    width: 300px;
+    height: 250px;
+  }
 
-    .title {
-        font-size: 24px;
-        margin-left: 20px;
-        top: 20px;
-    }
+  /* Заголовок */
+  .title {
+    font-size: 24px;
+    margin-left: 20px;
+    top: 20px;
+  }
 
-    .img1 {
-        right: 20px;
-        top: 20px;
-        margin-left: 20px;
-    }
-    .pm{
-        top: 500px; 
-        left: 20px;
-        font-size: 30px;
-    }
-}
-@media (min-width: 769px) and (max-width: 1200px) {
-    .img1 img {
-        width: 450px;
-        height: 375px;
-    }
+  /* Позиціонування зображення */
+  .img1 {
+    right: 20px;
+    top: 20px;
+    margin-left: 20px;
+  }
 
-    .title {
-        font-size: 36px;
-        margin-left: 30px;
-        top: 30px;
-    }
-
-    .img1 {
-        right: 30px;
-        top: 30px;
-        margin-left: 30px;
-    }
-    .pm{
-        top: 600px; 
-        left: 100px;
-        font-size: 35px;
-    }
-
-}
-@media (max-width: 768px) {
+  /* Додатковий текст */
   .pm {
-    font-size: 1.4rem;
+    top: 500px; 
+    left: 20px;
+    font-size: 30px;
   }
-
-  .img2 {
-    width: 60px;
-  }
-}
-
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 60px 0;
-}
-
-.pm {
-  color: white;
-  font-family: 'Roboto Nova', sans-serif;
-  font-size: 40px;
-  position: relative;
-  top: 700px;
-  left: 200px;
-}
-    width: 80px;
-    }
-
-@media (min-width: 769px) and (max-width: 1200px) {
-    .pm {
-        font-size: 2.5rem;
-    }
-    
-    .img2 {
-        width: 70px;
-    }
-    }
-
-    /* ====== 📱 МОБІЛЬНІ ПРИСТРОЇ ====== */
-@media (max-width: 768px) {
 
   /* Хедер */
   .header {
@@ -93,6 +35,7 @@
     padding: 10px;
   }
 
+  /* Меню */
   .menu {
     flex-direction: column;
     align-items: center;
@@ -113,19 +56,23 @@
     width: 90%;
   }
 
+  /* Заголовок */
   .title {
     font-size: 2rem;
   }
 
+  /* Додатковий текст */
   .pm {
     font-size: 4vw;
   }
 
+  /* Зображення моделі */
   .img1 model-viewer {
     width: 100%;
     height: 300px;
   }
 
+  /* Кнопка старту */
   .start-btn {
     padding: 10px 20px;
     font-size: 1rem;
@@ -143,6 +90,7 @@
     align-items: center;
   }
 
+  /* Друге зображення */
   .img2 {
     width: 25vw;
   }
@@ -161,34 +109,41 @@
 
 /* ====== 💻 ПЛАНШЕТИ ====== */
 @media (min-width: 769px) and (max-width: 1200px) {
+  /* Контейнер */
   .container {
     width: 85%;
     flex-wrap: wrap;
     gap: 50px;
   }
 
+  /* Заголовок */
   .title {
     font-size: 3rem;
   }
 
+  /* Додатковий текст */
   .pm {
     font-size: 2.5vw;
   }
 
+  /* Зображення моделі */
   .img1 model-viewer {
     max-width: 600px;
     height: 400px;
   }
 
+  /* Промо */
   .promo {
     flex-wrap: wrap;
     gap: 50px;
   }
 
+  /* Друге зображення */
   .img2 {
     width: 15vw;
   }
 
+  /* Грід */
   .frgrid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
@@ -196,18 +151,22 @@
 
 /* ====== 🖥️ ВЕЛИКІ МОНИТОРИ ====== */
 @media (min-width: 1201px) and (max-width: 1800px) {
+  /* Контейнер */
   .container {
     width: 80%;
   }
 
+  /* Заголовок */
   .title {
     font-size: 3.5rem;
   }
 
+  /* Додатковий текст */
   .pm {
     font-size: 2vw;
   }
 
+  /* Зображення моделі */
   .img1 model-viewer {
     max-width: 800px;
     height: 500px;
@@ -216,14 +175,17 @@
 
 /* ====== 🖥️🖥️ УЛЬТРАШИРОКІ ЕКРАНИ ====== */
 @media (min-width: 1801px) {
+  /* Контейнер */
   .container {
     max-width: 1600px;
   }
 
+  /* Заголовок */
   .title {
     font-size: 4.5rem;
   }
 
+  /* Зображення моделі */
   .img1 model-viewer {
     max-width: 1000px;
     height: 650px;

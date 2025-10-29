@@ -1,13 +1,15 @@
 // chart.js
+
+// Секція 1: Дочекаємось завантаження DOM
 document.addEventListener("DOMContentLoaded", async () => {
     const ctx = document.getElementById('salesChart').getContext('2d');
 
     try {
-        // Отримуємо список всіх років
+        // Секція 2: Отримуємо список всіх років
         const yearsResponse = await fetch('http://localhost:3000/years');
         const years = await yearsResponse.json();
 
-        // Отримуємо сумарні продажі за кожен рік
+        // Секція 3: Отримуємо сумарні продажі за кожен рік
         const salesData = [];
         for (const year of years) {
             const salesResponse = await fetch(`http://localhost:3000/sales/${year}`);
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log('Sales data:', salesData);
         }
 
-        // Створюємо графік
+        // Секція 4: Створюємо графік
         new Chart(ctx, {
             type: 'bar', // або 'line'
             data: {
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     } catch (err) {
+        // Секція 5: Обробка помилок
         console.error('Error loading chart data:', err);
     }
 });

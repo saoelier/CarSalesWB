@@ -1,14 +1,16 @@
+/* ===== СТИЛІ ДЛЯ ТІЛА І ФОНУ ===== */
 body {
   margin: 0;
   background-color: #ffffff; /* білий фон */
   color: black;
   font-family: 'Roboto Nova', sans-serif;
 }
+
 html {
   scroll-behavior: smooth; /* плавна прокрутка */
 }
 
-/* Фонова частина сторінки */
+/* ===== ФОН І ДИЗАЙН СТОРІНКИ ===== */
 .background {
   width: 100%;
   height: 400px;
@@ -21,7 +23,7 @@ html {
   z-index: 1;
 }
 
-/* ===== HEADER ===== */
+/* ===== ХЕДЕР ===== */
 .header {
   width: 100%;
   height: 50px;
@@ -35,7 +37,7 @@ html {
 }
 
 .menu {
-  display: flex; /* щоб елементи йшли в ряд */
+  display: flex; /* елементи меню в ряд */
 }
 
 .menu-item {
@@ -43,7 +45,7 @@ html {
   color: white;
   font-family: 'Roboto Nova', sans-serif;
   font-size: 20px;
-  padding: 20px 16px; /* внутрішній відступ — щоб прямокутник був більшим за текст */
+  padding: 20px 16px; /* внутрішній відступ */
 }
 
 .menu-item:hover {
@@ -52,22 +54,22 @@ html {
   border-radius: 8px;
 }
 
-/* ===== TIMELINE ===== */
+/* ===== ТАЙМЛАЙН ===== */
 .timeline-container {
   width: 90%;
   max-width: 1200px;
-  position: absolute; /* щоб "лежав" над background */
-  top: 50%; /* центруємо по вертикалі відносно background */
+  position: absolute; /* над фоном */
+  top: 50%; /* центруємо по вертикалі */
   left: 50%; /* центруємо по горизонталі */
   transform: translate(-50%, -50%); /* точне центрування */
-  z-index: 5; /* над background, під header */
+  z-index: 5; /* над фоном, під хедером */
 }
 
 .timeline {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; /* щоб зайняти всю ширину контейнера */
+  width: 100%; /* зайняти всю ширину контейнера */
   border-top: 4px solid white;
   position: relative;
 }
@@ -77,7 +79,7 @@ html {
   text-align: center;
 }
 
-/* Крапки на лінії */
+/* ===== КРАПКИ НА ЛІНІЇ ===== */
 .dot {
   width: 16px;
   height: 16px;
@@ -90,7 +92,7 @@ html {
   transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Роки (позначення) */
+/* ===== РОКИ (ПОЗНАЧЕННЯ) ===== */
 .year {
   display: block;
   font-size: 2.3rem;
@@ -108,7 +110,7 @@ html {
   text-decoration: none;
 }
 
-/* Ефекти при наведенні */
+/* ===== ЕФЕКТИ ПРИ НАВЕДЕННІ ===== */
 .event:hover .dot {
   background-color: #003e91;
   transform: translateX(-50%) scale(1.3);
@@ -116,12 +118,12 @@ html {
 
 .event:hover .year {
   color: #003e91;
-  transform: translateX(-50%) scale(3); /* масштаб і центр по X */
+  transform: translateX(-50%) scale(3); /* масштаб */
   font-size: 2.5rem; /* збільшення розміру */
   font-style: italic; /* курсив */
 }
 
-/* Чергування розташування над/під лінією */
+/* ===== ЧЕРГУВАННЯ РОЗТАШУВАННЯ ===== */
 .timeline.alternate .event:nth-child(odd) .year {
   position: absolute;
   bottom: 60px;
@@ -136,12 +138,12 @@ html {
   transform: translateX(-50%);
 }
 
-/* Блоки подій під таймлайном */
+/* ===== БЛОКИ ПОДІЙ ПІД ТАЙМЛАЙНОМ ===== */
 .events-below {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* вирівнюємо всі блоки по центру */
+  align-items: center; /* вирівнюємо по центру */
   gap: 40px;
   margin-top: 420px;
 }
@@ -157,7 +159,7 @@ html {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   width: 90%;
-  max-width: 1000px; /* фіксована ширина блоку */
+  max-width: 1000px; /* фіксована ширина */
   box-sizing: border-box;
 }
 
@@ -166,23 +168,23 @@ html {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Нумерація в блоках подій */
+/* ===== НУМЕРАЦІЯ В БЛОКАХ ПОДІЙ ===== */
 .numbers {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: right;
   font-weight: bold;
-  font-size: clamp(2rem, 5vw, 3.5rem); /* адаптивний розмір цифр */
+  font-size: clamp(2rem, 5vw, 3.5rem); /* адаптивний розмір */
   line-height: 1;
   flex-shrink: 0;
 }
 
-/* Текстовий вміст блоку події */
+/* ===== ТЕКСТОВИЙ ВМІСТ БЛОКУ ПОДІЇ ===== */
 .text {
   flex: 1;
   text-align: left;
-  font-size: clamp(1.2rem, 2vw, 1.6rem); /* адаптивний шрифт для тексту */
+  font-size: clamp(1.2rem, 2vw, 1.6rem); /* адаптивний шрифт */
   line-height: 1.4;
 }
 
@@ -191,40 +193,42 @@ html {
   margin-bottom: 8px;
 }
 
-/* Зображення в блоці події */
+/* ===== ЗОБРАЖЕННЯ В БЛОЦІ ПОДІЇ ===== */
 .image img {
-  width: 300px;       /* трішки більша ширина */
+  width: 300px;       /* ширина */
   height: 180px;      /* пропорційна висота */
   border-radius: 10px;
   object-fit: cover;  /* обрізає, щоб заповнити квадрат */
   flex-shrink: 0;
 }
 
-/* Кнопка повороту вгору сторінки */
+/* ===== КНОПКА ПОВЕРНЕННЯ ВГОРУ ===== */
 #backToTop {
-  position: fixed;      /* плаваючий внизу */
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  background-color: #0E1033;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+  position: fixed; /* Фіксоване положення */
+  bottom: 30px; /* Відступ знизу */
+  right: 30px; /* Відступ справа */
+  z-index: 100; /* Порядок відображення */
+  background-color: #0E1033; /* Колір фону */
+  color: white; /* Колір тексту */
+  padding: 10px 15px; /* Відступи */
+  border-radius: 8px; /* Закруглені кути */
+  text-decoration: none; /* Без підкреслення */
+  font-weight: bold; /* Жирний текст */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Тінь */
+  transition: all 0.3s ease; /* Плавний перехід */
 }
 
 #backToTop:hover {
-  background-color: #003e91;
-  transform: translateY(-3px);
+  background-color: #003e91; /* Колір фону при наведенні */
+  transform: translateY(-3px); /* Підняття при наведенні */
 }
+
+/* ===== ФУТЕР ===== */
 .footer {
     width: 100%;
     background-color: #030458;
     color: white;
-    padding: 20px 40px; /* менший padding зверху/знизу */
+    padding: 20px 40px; /* padding */
     border-radius: 50px 50px 0 0;
     display: flex;
     flex-direction: column;
@@ -237,15 +241,15 @@ html {
     width: 90%;
     max-width: 1200px;
     display: flex;
-    justify-content: left; /* лого зліва, лінки по центру */
+    justify-content: left; /* лого зліва */
     align-items: center;
     flex-wrap: wrap;
     gap: 100px;
-    margin-bottom: 10px; /* менше відступу знизу */
+    margin-bottom: 10px; /* відступ знизу */
 }
 
 .footer-logo h3 {
-    font-size: 1.5rem; /* трохи менший шрифт */
+    font-size: 1.5rem; /* шрифт */
     margin: 0;
 }
 
@@ -258,21 +262,20 @@ html {
     color: white;
     text-decoration: none;
     font-size: 1rem;
-
 }
 
 .footer-links a:hover {
-    weight: bold;
+    font-weight: bold; /* виправлено на font-weight */
     text-decoration: underline;
 }
 
 .footer-bottom {
     text-align: center;
-    font-size: 0.8rem; /* трохи менший текст */
+    font-size: 0.8rem; /* текст */
     color: #b0b0b0;
 }
 
-/* ===== Адаптив ===== */
+/* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
