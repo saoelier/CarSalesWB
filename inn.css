@@ -25,32 +25,59 @@
 /* Контейнер кнопок */
 .buttons-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px; /* трохи більша відстань */
-  max-width: 850px;
-  z-index: 2;
+  flex-wrap: wrap;           
+  justify-content: center;   
+  gap: 18px;                 
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Кнопки — трохи крупніше */
 .link-btn {
-  flex: 1 1 calc(25% - 18px);
+  flex: 1 1 200px;       /* минимальная ширина 200px, кнопки растягиваются */
   min-width: 160px;
+  max-width: 250px;
   text-decoration: none;
   color: white;
   background-color: #030458;
   border-radius: 10px;
   font-family: 'Roboto Nova', sans-serif;
-  font-size: 1.1rem; /* було 1rem */
+  font-size: 1.1rem;     /* базовый размер шрифта */
   text-align: center;
-  padding: 14px 0; /* було 12px */
-  transition: background-color 0.3s;
+  padding: 14px 0;       /* базовая высота */
+  transition: all 0.3s;
   cursor: pointer;
 }
 
 .link-btn:hover {
   background-color: #151784;
 }
+
+/* Адаптивные размеры и строки */
+@media (max-width: 900px) {
+  .link-btn {
+    flex: 1 1 calc(33.3% - 18px); 
+    font-size: 1rem;       /* чуть меньше шрифт */
+    padding: 12px 0;       /* чуть меньше высота */
+  }
+}
+
+@media (max-width: 700px) {
+  .link-btn {
+    flex: 1 1 calc(50% - 18px); 
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .link-btn {
+    flex: 1 1 100%; 
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+}
+
 
 .info-section {
   background-color: #ffffff;      /* фон для контенту після бекграунду */
@@ -134,7 +161,7 @@
 
 .tgrid-item img {
     width: 100%;
-    height: auto;
+    height: 300px;
     max-height: 30vh; 
     object-fit: cover;
     border-radius: 12px 12px 0 0;
@@ -143,7 +170,7 @@
 .tgrid-item p {
     color: white;
     font-family: 'Roboto Nova', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 10px 6px;
 }
 
